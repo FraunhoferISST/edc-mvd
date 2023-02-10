@@ -16,7 +16,7 @@ variable "participant_country" {
 }
 
 variable "location" {
-  default = "eastus"
+  default = "northeurope"
 }
 
 variable "resource_group" {
