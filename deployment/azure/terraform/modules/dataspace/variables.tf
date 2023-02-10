@@ -4,7 +4,7 @@ variable "prefix" {
 }
 
 variable "location" {
-  default = "eastus"
+  default = "northeurope"
 }
 
 variable "resource_group" {
