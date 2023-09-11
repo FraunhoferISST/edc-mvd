@@ -53,13 +53,8 @@ Per Participant
 
 
 
-![Alt text](Provider-Komponenten%C3%BCbersicht.png)
-
-<!--- ![Consumer components](https://github.com/FraunhoferISST/edc-mvd/blob/MVD-docs-enhancement-diagrams/resources/Consumer-%20Component%20Overview.png) -->
-
-![Alt text](<Consumer- Component Overview.png>)
-
-<!--- ![Provider components](https://github.com/FraunhoferISST/edc-mvd/blob/MVD-docs-enhancement-diagrams/resources/Provider-Komponenten%C3%BCbersicht.png) -->
+![Consumer components](https://github.com/FraunhoferISST/edc-mvd/blob/MVD-docs-enhancement-diagrams/resources/Consumer-%20Component%20Overview.png) 
+![Provider components](https://github.com/FraunhoferISST/edc-mvd/blob/MVD-docs-enhancement-diagrams/resources/Provider-Komponenten%C3%BCbersicht.png)
 
 
  
@@ -82,9 +77,7 @@ It is important to note, that different dataspace authorities can exist. For exa
 Often, dataspaces are created by consortia that aspire a shared governance. This means, that the rules for the dataspace are decided as group. The decision is then implemented in form of policies and the operation mode(s) of the Dataspace Authority. Note that this does not mean, that a single consortium member or party has full control. 
 
 **How**
-![Simple registration flow](<Simplified registration service flow.png>)
-
-<!--- ![Simple registration flow](https://github.com/FraunhoferISST/edc-mvd/blob/MVD-docs-enhancement-diagrams/resources/Simplified%20registration%20service%20flow.png) -->
+![Simple registration flow](https://github.com/FraunhoferISST/edc-mvd/blob/MVD-docs-enhancement-diagrams/resources/Simplified%20registration%20service%20flow.png)
 
 
 ### Control Plane and Data Plane
@@ -112,8 +105,6 @@ When considering the detailed tasks of the Control Plane, they can be divided in
 As in case of the other components, Data Plane and Control Plane oblige to the participants' governance and can be deployed separately. Often, a participant has multiple Data Planes in place for different purposes. In case of using a connector from a service provider (e.g., called connector-as-a-service), users can technically select their preferred service provider for the connector who don't necessarily has to be the same one as for the other components, and enables the basic functionality to adapt to different dataspaces. As well, the connector can also be used completely without any other component, such as in the [samples](https://github.com/eclipse-edc/Samples). Nevertheless, the [DSP](https://https://docs.internationaldataspaces.org/ids-knowledgebase/v/dataspace-protocol/overview/readme) and [IDSA Rulebook endorse a range of functionalities](https://docs.internationaldataspaces.org/ids-knowledgebase/v/idsa-rulebook/idsa-rulebook/3_functional_requirements) be fully prepared for operational dataspace participation and fully leverage the benefits of dataspaces.
 
 **How**
-![alt](<20072023_Connector only.png>)
-
 
 
 
