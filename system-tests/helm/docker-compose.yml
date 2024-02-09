@@ -24,21 +24,21 @@ services:
   edc-connector-dashboard-company1:
     build:
       #e.g. /home/user/RegistrationService/launcher
-      context: /home/farhin/Projects/MVD/edc-dashboard
+      context: /path/to/edc-dashboard
       args:
         BASE_PATH: "/company1-datadashboard/"
     image: edc-connector-dashboard-company1:v.01
   edc-connector-dashboard-company2:
     build:
       #e.g. /home/user/RegistrationService/launcher
-      context: /home/farhin/Projects/MVD/edc-dashboard
+      context: /path/to/edc-dashboard
       args:
         BASE_PATH: "/company2-datadashboard/"
     image: edc-connector-dashboard-company2:v.01
   edc-connector-dashboard-company3:
     build:
       #e.g. /home/user/RegistrationService/launcher
-      context: /home/farhin/Projects/MVD/edc-dashboard
+      context: /path/to/edc-dashboard
       args:
         BASE_PATH: "/company3-datadashboard/"
     image: edc-connector-dashboard-company3:v.01

@@ -1,5 +1,5 @@
 # Helm Charts for MVD
-We have demonstrated a containerized deployment of the MVD in [system-tests/README.md](../README.md). To take it one step further 
+We have demonstrated a containerized deployment of the MVD in [system-tests/README.md](../README.md). To take it one step further
 we will be using [kubernetes](https://kubernetes.io/docs/home/) which is a container orchestration tool for automated deployment, scaling, and management of these containers.
 In addition, we have used [Helm](https://helm.sh/docs/) to manage all the Kubernetes YAML files.
 [./helm-charts](./helm-charts) folder contains the helm charts for the kubernetes components of the applications used in MVD.
@@ -8,10 +8,10 @@ In addition, we have used [Helm](https://helm.sh/docs/) to manage all the Kubern
 ## Deploying MVD
 For the deployment purpose we need,
 * a kubernetes cluster, and
-* helm installed 
+* helm installed
 
-You can use [minikube](https://minikube.sigs.k8s.io/docs/) or [kind](https://kind.sigs.k8s.io/) 
-to set up a local kubernetes cluster for this testing purpose. Follow the [documentation](https://minikube.sigs.k8s.io/docs/start/) 
+You can use [minikube](https://minikube.sigs.k8s.io/docs/) or [kind](https://kind.sigs.k8s.io/)
+to set up a local kubernetes cluster for this testing purpose. Follow the [documentation](https://minikube.sigs.k8s.io/docs/start/)
 to install minikube in your machine. Once everything is installed, you can start the cluster with ```minikube start``` command.
 Also, we will be using Helm, which can be installed following the [instructions](https://helm.sh/docs/intro/install/) provide in their official website.
 
@@ -29,8 +29,8 @@ Or, to mount at start,
 
 
 ## Creating Docker Images
-As some of the mvd applications do not have publicly available images, we have to create images for those in the cluster host system. 
-That is we have to build docker images directly inside minikube/kind. For which we will be using the [docker-compose.yml](./docker-compose.yml) file. 
+As some of the mvd applications do not have publicly available images, we have to create images for those in the cluster host system.
+That is we have to build docker images directly inside minikube/kind. For which we will be using the [docker-compose.yml](./docker-compose.yml) file.
 
 First, edit the path to mvd-datadashboard project in the [docker-compose.yml](./docker-compose.yml) file.
 ```yaml
@@ -42,11 +42,11 @@ First, edit the path to mvd-datadashboard project in the [docker-compose.yml](./
 ```
 
 To point your terminal’s docker-cli to minikube's Docker Engine, run:
-```eval $(minikube docker-env)``` 
+```eval $(minikube docker-env)```
 
 Then execute ```docker compose -f docker-compose.yml build```
 
-It will create the following docker images in minikube's docker environment: 
+It will create the following docker images in minikube's docker environment:
 ```registration-service:v.01```, ```edc-connector:v.01```, ```cli-tools:v.01```, ```edc-connector-dashboard:v.01```.
 
 
@@ -67,14 +67,14 @@ We can test the following endpoints,
 
 
 ## Commands for Deploying MVD with KinD
-Start the kind cluster with the config file [kind-cluster.yaml](kind-cluster.yaml). 
+Start the kind cluster with the config file [kind-cluster.yaml](kind-cluster.yaml).
 ```shell
 kind create cluster --config=kind-cluster.yaml
 ```
 
 Create the docker images in the host machine, ```docker compose -f docker-compose.yml build```
 
-Load the images into cluster node, 
+Load the images into cluster node,
 ```shell
 kind load docker-image edc-connector-dashboard:v.01 edc-connector:v.01 registration-service:v.01 cli-tools:v.01
 ```
@@ -95,6 +95,12 @@ The company services are exposed at port,
 The Azurite blob storage endpoint is exposed at port `31000`.
 
 
+## APIs with Ingress
+All the company-dashboards can be accessed from the following APIs,
+
+*   company1-dashboard: [http:/localhost/company1-datadashboard/](http:/localhost/company1-datadashboard/)
+*   company2-dashboard: [http:/localhost/company2-datadashboard/](http:/localhost/company2-datadashboard/)
+*   company3-dashboard: [http:/localhost/company3-datadashboard/](http:/localhost/company3-datadashboard/)
 
 
 
