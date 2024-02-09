@@ -3,6 +3,8 @@ apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
   - role: control-plane
     # add a mount from /path/to/my/files on the host to /files on the node
+    labels:
+      ingress-ready: true
     extraMounts:
       - hostPath: ./k8s_resources/common-resources
         containerPath: /var/lib/minikube/mvd-resources/common-resources
@@ -20,32 +22,28 @@ nodes:
         # default false
         readOnly: true
     # add extraPortMappings and node-labels
-#    kubeadmConfigPatches:
-#    - |
-#      kind: InitConfiguration
-#      nodeRegistration:
-#        kubeletExtraArgs:
-#          node-labels: "ingress-ready=true"
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
     extraPortMappings:
-    - containerPort: 30091
-      hostPort: 30091
-      protocol: TCP
-    - containerPort: 30092
-      hostPort: 30092
-      protocol: TCP
-    - containerPort: 30093
-      hostPort: 30093
-      protocol: TCP
-    - containerPort: 31111
-      hostPort: 31111
-      protocol: TCP
-    - containerPort: 31112
-      hostPort: 31112
-      protocol: TCP
-    - containerPort: 31113
-      hostPort: 31113
-      protocol: TCP
-    - containerPort: 31000
-      hostPort: 31000
-      protocol: TCP
-
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+      #      - containerPort: 30091
+      #        hostPort: 30091
+      #        protocol: TCP
+      #      - containerPort: 30092
+      #        hostPort: 30092
+      #        protocol: TCP
+      #      - containerPort: 30093
+      #        hostPort: 30093
+      #        protocol: TCP
+      - containerPort: 31000
+        hostPort: 31000
+        protocol: TCP

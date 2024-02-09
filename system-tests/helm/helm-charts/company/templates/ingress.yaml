@@ -6,14 +6,14 @@ metadata:
   labels:
     {{- include "company.labels" . | nindent 4 }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-    - host: {{ include "company.fullname" . }}
-      http:
+    - http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /{{ include "company.fullname" . }}(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ include "company.fullname" . }}
