@@ -10,9 +10,9 @@ services:
     image: registration-service:v.01
 
   edc-connector:
-      build:
-        context: ../../launchers/connector
-      image: edc-connector:v.01
+    build:
+      context: ../../launchers/connector
+    image: edc-connector:v.01
 
   cli-tools:
     build:
@@ -20,10 +20,26 @@ services:
     image: cli-tools:v.01
 
 
-    # connector-dashboard.
-  edc-connector-dashboard:
+    # connector-dashboards
+  edc-connector-dashboard-company1:
     build:
       #e.g. /home/user/RegistrationService/launcher
-      context: path/to/mvd-datadashboard
-    image: edc-connector-dashboard:v.01
+      context: /home/farhin/Projects/MVD/edc-dashboard
+      args:
+        BASE_PATH: "/company1-datadashboard/"
+    image: edc-connector-dashboard-company1:v.01
+  edc-connector-dashboard-company2:
+    build:
+      #e.g. /home/user/RegistrationService/launcher
+      context: /home/farhin/Projects/MVD/edc-dashboard
+      args:
+        BASE_PATH: "/company2-datadashboard/"
+    image: edc-connector-dashboard-company2:v.01
+  edc-connector-dashboard-company3:
+    build:
+      #e.g. /home/user/RegistrationService/launcher
+      context: /home/farhin/Projects/MVD/edc-dashboard
+      args:
+        BASE_PATH: "/company3-datadashboard/"
+    image: edc-connector-dashboard-company3:v.01
 

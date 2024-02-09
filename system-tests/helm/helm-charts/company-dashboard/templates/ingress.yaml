@@ -6,17 +6,18 @@ metadata:
   labels:
     {{- include "company-dashboard.labels" . | nindent 4 }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-    - host: {{ include "company-dashboard.fullname" . }}
-      http:
+    - http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /{{ include "company-dashboard.fullname" . }}(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ include "company-dashboard.fullname" . }}
                 port:
                   number: 80
+  ingressClassName: nginx
 {{- end }}

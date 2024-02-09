@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: {{ include "company-dashboard.fullname" . }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}-{{ .Values.companyName }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
