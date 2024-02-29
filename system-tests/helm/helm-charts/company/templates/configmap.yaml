@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "company.labels" . | nindent 4 }}
 data:
-  EDC_CONNECTOR_NAME: {{ include "company.name" . }}
+  EDC_CONNECTOR_NAME: "{{ include "company.name" . }}"
   EDC_DSP_CALLBACK_ADDRESS: "http://{{ include "company.name" . }}:8282/api/dsp"
   EDC_PARTICIPANT_ID: "did:web:did-server:{{ include "company.name" . }}"
   EDC_BLOBSTORE_ENDPOINT_TEMPLATE: "http://azurite:10000/%s"

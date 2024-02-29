@@ -5,4 +5,4 @@ metadata:
   labels:
     {{- include "azurite.labels" . | nindent 4 }}
 data:
-  AZURITE_ACCOUNTS: company1assets:key1;company2assets:key2;company3assets:key3
+  AZURITE_ACCOUNTS: "company1assets:key1;company2assets:key2;company3assets:key3"
