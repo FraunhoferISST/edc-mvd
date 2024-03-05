@@ -35,6 +35,14 @@ spec:
               containerPort: {{ .Values.ports.mgmt.containerPort }}
             - name: control
               containerPort: 8383
+            - name: debug
+              containerPort: {{ .Values.ports.debug.port }}
+              protocol: TCP
+          {{- if .Values.debug.enabled }}
+          env:
+            - name: "JAVA_TOOL_OPTIONS"
+              value: '-Xdebug -agentlib:jdwp=transport=dt_socket,address=0.0.0.0:{{ .Values.ports.debug.port }},server=y,suspend=n'
+          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ include "company.fullname" . }}-configmap
