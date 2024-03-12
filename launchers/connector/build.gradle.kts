@@ -85,3 +85,11 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
     dependsOn(distTar, distZip)
     mustRunAfter(distTar, distZip)
 }
+
+tasks.withType<JavaCompile> {
+
+    options.isDebug = true
+
+    options.compilerArgs.add("-g")
+
+}

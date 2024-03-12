@@ -1,0 +1,31 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    # add a mount from /path/to/my/files on the host to /files on the node
+    labels:
+      ingress-ready: true
+    extraMounts:
+      - hostPath: ./k8s_resources/common-resources
+        containerPath: /var/lib/minikube/mvd-resources/common-resources
+      - hostPath: ./k8s_resources/resources
+        containerPath: /var/lib/minikube/mvd-resources/resources
+      - hostPath: ./k8s_resources/deployment
+        containerPath: /var/lib/minikube/mvd-resources/deployment
+    # add extraPortMappings and node-labels
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+      - containerPort: 31000
+        hostPort: 31000
+        protocol: TCP
