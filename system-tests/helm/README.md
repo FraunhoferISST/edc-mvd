@@ -32,13 +32,13 @@ Clone the repository [edc-dashboard ](https://github.com/FraunhoferISST/edc-dash
 branch `helm_dashboard_changes`.
 
 ## Create Cluster
-- Navigate to the helm directory ([/system-tests/helm](/system-tests/helm)), `cd system-tests/helm/`
+- Navigate to the helm directory ([/system-tests/helm](../../system-tests/helm)), `cd system-tests/helm/`
 
 - Set the environment variable `MVD_UI_PATH` to the path of the DataDashboard repository.
 ```bash
 export MVD_UI_PATH="/path/to/mvd-datadashboard"
 ```
-- Run the following command to build the necessary images from [docker-compose.yml](system-tests/helm/docker-compose.yml)
+- Run the following command to build the necessary images from [docker-compose.yml](./docker-compose.yml)
 ```bash
 docker compose -f docker-compose.yml build
 ```
@@ -46,8 +46,8 @@ docker compose -f docker-compose.yml build
 ```bash
 ./kind-run.sh
 ```
-[kind-run.sh](system-tests/helm/kind-run.sh) is basically a bash script containing all the commands to,
-* create a cluster with the configuration defined in [kind-cluster.yaml](system-tests/helm/kind-cluster.yaml) file
+[kind-run.sh](./kind-run.sh) is basically a bash script containing all the commands to,
+* create a cluster with the configuration defined in [kind-cluster.yaml](./kind-cluster.yaml) file
 * load the docker images to cluster
 * apply ingress
 
@@ -74,9 +74,9 @@ name of the `cli-tools` pod. Then execute `kubectl logs <cli-tools-pod>`. If it 
 
 ### Company Data-dashboards
 All the company-dashboards can be accessed with the following URLs,
-*   company1-dashboard: [http:/localhost/company1-datadashboard/](http:/localhost/company1-datadashboard/)
-*   company2-dashboard: [http:/localhost/company2-datadashboard/](http:/localhost/company2-datadashboard/)
-*   company3-dashboard: [http:/localhost/company3-datadashboard/](http:/localhost/company3-datadashboard/)
+*   company1-dashboard: <http:/localhost/company1-datadashboard/>
+*   company2-dashboard: <http:/localhost/company2-datadashboard/>
+*   company3-dashboard: <http:/localhost/company3-datadashboard/>
 
 It may take some time initially to load all the data. After everything is loaded properly,
 each company will have two assets in `assets` tab. Company1 and company2 will have six
@@ -99,7 +99,7 @@ assets in `catalog browser`. Company3 will display three assets in its `catalog 
 
 2. Request the file from company2:
 
-    * Open the dashboard of the company2 [http:/localhost/company2-datadashboard/](http:/localhost/company2-datadashboard/)
+    * Open the dashboard of the company2 <http:/localhost/company2-datadashboard/>
     * Go to `Catalog Browser` and select `Negotiate` on asset `test-document_company1`
     * Go to `Contracts` and click `Transfer` on the negotiated contract
     * Select `AzureStorage` from the dropdown and `Start transfer`
