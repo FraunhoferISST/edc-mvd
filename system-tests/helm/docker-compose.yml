@@ -6,17 +6,17 @@ services:
       context: ../../launchers/registrationservice
       args:
         JVM_ARGS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5008"
-    image: registration-service:v.01
+    image: registration-service:v0.2.0
 
   edc-connector:
     build:
       context: ../../launchers/connector
-    image: edc-connector:v.01
+    image: edc-connector:v0.2.0
 
   cli-tools:
     build:
       context: ../resources/cli-tools
-    image: cli-tools:v.01
+    image: cli-tools:v0.2.0
 
 
   # connector-dashboards
@@ -25,17 +25,17 @@ services:
       context: ${MVD_UI_PATH}
       args:
         BASE_PATH: "/company1-datadashboard/"
-    image: edc-connector-dashboard-company1:v.01
+    image: edc-connector-dashboard-company1:v0.2.0
   edc-connector-dashboard-company2:
     build:
       context: ${MVD_UI_PATH}
       args:
         BASE_PATH: "/company2-datadashboard/"
-    image: edc-connector-dashboard-company2:v.01
+    image: edc-connector-dashboard-company2:v0.2.0
   edc-connector-dashboard-company3:
     build:
       context: ${MVD_UI_PATH}
       args:
         BASE_PATH: "/company3-datadashboard/"
-    image: edc-connector-dashboard-company3:v.01
+    image: edc-connector-dashboard-company3:v0.2.0
 
