@@ -1,19 +1,18 @@
-# Helm Charts for MVD
+# MVD on Kubernetes
 We have demonstrated a containerized deployment of the MVD in [system-tests/README.md](../README.md). In this section, 
-we will be deploying the MVD using [kubernetes](https://kubernetes.io/docs/home/).
-In addition, we have used [Helm](https://helm.sh/docs/) to manage all the Kubernetes YAML files.
-The [./helm-charts](./helm-charts) folder contains the helm charts of the kubernetes components.
+we will be deploying the MVD on [kubernetes](https://kubernetes.io/docs/home/).
+In addition, we will be using [Helm](https://helm.sh/docs/) to manage all the Kubernetes YAML files.
 
 
-## Install Kind and Helm
-For the deployment purpose we need,
-* a kubernetes cluster, and
-* helm installed
+## Install Tools
+For the deployment purpose we will need,
+* A kubernetes cluster, for which we have used [kind](https://kind.sigs.k8s.io/) (version 0.20.0). Follow the official [user guide](https://kind.sigs.k8s.io/docs/user/quick-start/)
+  to install `kind` in your local environment.
+* [Kubectl](https://kubernetes.io/docs/reference/kubectl/), to communicate with the kubernetes cluster. Install `kubectl` 
+  following the [kubernetes documentation](https://kubernetes.io/docs/tasks/tools/)
+* Helm, to manage our kubernetes components. We have used Helm-3 (version v3.14.2). For the installation,
+  follow the [instructions](https://helm.sh/docs/intro/install/) provided in their official website.
 
-We have used [kind](https://kind.sigs.k8s.io/), to set up a local kubernetes cluster. Follow the kind official [user guide](https://kind.sigs.k8s.io/docs/user/quick-start/)
-to install `kind` in your local environment.
-Also, we will be using Helm, which can be installed following the [instructions](https://helm.sh/docs/intro/install/) provided in their official website.
-Once they are installed properly, we can start with the cluster creation.
 
 ## MVD build tasks
 Build `MVD` by running the following command from the root of the `MVD` project folder:
@@ -27,12 +26,12 @@ Then execute the following commands from the `MVD` root folder, to build the con
 ```
 
 
-## MVD UI
+## MVD DataDashboard
 Clone the repository [edc-dashboard ](https://github.com/FraunhoferISST/edc-dashboard) and checkout
 branch `helm_dashboard_changes`.
 
 ## Create Cluster
-- Navigate to the helm directory ([/system-tests/helm](../../system-tests/helm)), `cd system-tests/helm/`
+- Navigate to the helm directory ([/system-tests/helm](../../system-tests/helm)): `cd system-tests/helm/`
 
 - Set the environment variable `MVD_UI_PATH` to the path of the DataDashboard repository.
 ```bash
@@ -65,20 +64,18 @@ The file [run-mvd.sh](./run-mvd.sh) contains commands to install helm charts tha
 components for mvd in our cluster.
 
 
-[//]: # (todo: some command to wait for the cli-tools to complete the task)
-
 Check The container `cli-tools` if it has registered all participants successfully. Run `kubectl get pods`. Copy the
 name of the `cli-tools` pod. Then execute `kubectl logs <cli-tools-pod>`. If it shows all the participants
 (e.g. `company1`, `company2`, `company3`) are `ONBORDED`, then it has successfully registered all the participants.
 
 
-### Company Data-dashboards
+### Company DataDashboards
 All the company-dashboards can be accessed with the following URLs,
 *   company1-dashboard: <http:/localhost/company1-datadashboard/>
 *   company2-dashboard: <http:/localhost/company2-datadashboard/>
 *   company3-dashboard: <http:/localhost/company3-datadashboard/>
 
-It may take some time initially to load all the data. After everything is loaded properly,
+Initially it may take some time to load all the data. Once everything is loaded properly,
 each company will have two assets in `assets` tab. Company1 and company2 will have six
 assets in `catalog browser`. Company3 will display three assets in its `catalog browser`.
 
