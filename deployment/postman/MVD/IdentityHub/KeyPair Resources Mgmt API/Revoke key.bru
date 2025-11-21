@@ -1,0 +1,15 @@
+meta {
+  name: Revoke key
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{CS_URL}}/api/identity/v1alpha/participants/{{PARTICIPANT_ID}}/keypairs/key2/revoke
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,30 @@
+meta {
+  name: MVD
+}
+
+auth {
+  mode: apikey
+}
+
+auth:apikey {
+  key: X-Api-Key
+  value: password
+  placement: header
+}
+vars:pre-request {
+  HOST: http://localhost:8081
+  PROVIDER_DSP: http://localhost:8092
+  PROVIDER_ID: did:web:localhost%3A7093
+  CS_URL: http://localhost:8181
+  ISSUER_ADMIN_URL: http://localhost:10013
+  IH_API_TOKEN: c3VwZXItdXNlcg==.c3VwZXItc2VjcmV0LWtleQo=
+  ISSUER_ADMIN_API_TOKEN: c3VwZXItdXNlcg==.c3VwZXItc2VjcmV0LWtleQo=
+  PARTICIPANT_ID: super-user
+  DID: did:web:super-user
+  NEW_PARTICIPANT_ID: did:web:localhost%3A7083
+  CATALOG_URL: http://localhost:8084
+  TED_DSP_URL: 
+  ISSUER_CONTEXT_ID: ZGlkOndlYjpsb2NhbGhvc3QlM0ExMDEwMA==
+  ISSUER_DID: did:web:localhost%3A10100
+  PARTICIPANT_ID_BASE64: ZGlkOndlYjpsb2NhbGhvc3QlM0E3MDgz
+}

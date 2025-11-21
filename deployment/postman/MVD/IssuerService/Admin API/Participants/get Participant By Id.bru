@@ -1,0 +1,27 @@
+meta {
+  name: get Participant By Id
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{ISSUER_ADMIN_URL}}/api/admin/v1alpha/participants/{{ISSUER_CONTEXT_ID}}/holders/:participantId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  participantId: <string>
+}
+
+headers {
+  Accept: application/json
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Gets metadata for a certain participant.
+}

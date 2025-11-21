@@ -12,3 +12,4 @@
 #
 #
 org.eclipse.edc.issuerservice.seed.attestation.DemoAttestationsExtension
+org.eclipse.edc.issuerservice.seed.attestation.HansPeterAttestationsExtension

@@ -1,0 +1,33 @@
+meta {
+  name: Create "member-and-data-cred" definition
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{HOST}}/api/management/v3/contractdefinitions
+  body: text
+  auth: inherit
+}
+
+body:text {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@id": "member-and-dataprocessor-def",
+      "@type": "ContractDefinition",
+      "accessPolicyId": "require-membership",
+      "contractPolicyId": "require-dataprocessor",
+      "assetsSelector": {
+          "@type": "Criterion",
+          "operandLeft": "https://w3id.org/edc/v0.0.1/ns/id",
+          "operator": "=",
+          "operandRight": "asset-1"
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

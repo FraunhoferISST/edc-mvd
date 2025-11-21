@@ -1,0 +1,35 @@
+meta {
+  name: Create Asset 2
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{HOST}}/api/management/v3/assets
+  body: text
+  auth: inherit
+}
+
+body:text {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@id": "asset-2",
+      "@type": "Asset",
+      "properties": {
+          "description": "This asset requires Membership to view and SensitiveData credential to negotiate."
+      },
+      "dataAddress": {
+          "@type": "DataAddress",
+          "type": "HttpData",
+          "baseUrl": "https://jsonplaceholder.typicode.com/todos",
+          "proxyPath": "true",
+          "proxyQueryParams": "true"
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

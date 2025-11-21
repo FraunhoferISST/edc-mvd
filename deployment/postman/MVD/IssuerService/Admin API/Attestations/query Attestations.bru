@@ -1,0 +1,25 @@
+meta {
+  name: query Attestations
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{ISSUER_ADMIN_URL}}/api/admin/v1alpha/participants/{{ISSUER_CONTEXT_ID}}/attestations/query
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+  
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Query attestation definitions
+}

@@ -1,0 +1,27 @@
+meta {
+  name: get by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{ISSUER_ADMIN_URL}}/api/admin/v1alpha/participants/{{ISSUER_CONTEXT_ID}}/credentialdefinitions/:credentialDefinitionId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  credentialDefinitionId: <string>
+}
+
+headers {
+  Accept: application/json
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Gets a credential definition by its ID.
+}

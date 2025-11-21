@@ -1,0 +1,33 @@
+meta {
+  name: Create "require sensitive" definition
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{HOST}}/api/management/v3/contractdefinitions
+  body: text
+  auth: inherit
+}
+
+body:text {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@id": "sensitive-only-def",
+      "@type": "ContractDefinition",
+      "accessPolicyId": "require-membership",
+      "contractPolicyId": "require-sensitive",
+      "assetsSelector": {
+          "@type": "Criterion",
+          "operandLeft": "https://w3id.org/edc/v0.0.1/ns/id",
+          "operator": "=",
+          "operandRight": "asset-2"
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

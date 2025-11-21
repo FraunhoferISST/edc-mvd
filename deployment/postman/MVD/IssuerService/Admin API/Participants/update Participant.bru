@@ -1,0 +1,27 @@
+meta {
+  name: update Participant
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{ISSUER_ADMIN_URL}}/api/admin/v1alpha/participants/{{ISSUER_CONTEXT_ID}}/holders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "did": "<string>",
+    "participantId": "<string>",
+    "name": "<string>"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Updates participant data.
+}

@@ -1,0 +1,35 @@
+meta {
+  name: Create normal asset for CatalogServer
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{HOST}}/api/management/v3/assets
+  body: text
+  auth: inherit
+}
+
+body:text {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@id": "normal-asset-1",
+      "@type": "Asset",
+      "properties": {
+          "description": "This is a conventional asset, not a CatalogAsset."
+      },
+      "dataAddress": {
+          "@type": "DataAddress",
+          "type": "HttpData",
+          "baseUrl": "https://jsonplaceholder.typicode.com/todos",
+          "proxyPath": "true",
+          "proxyQueryParams": "true"
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

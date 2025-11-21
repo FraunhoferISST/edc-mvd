@@ -1,0 +1,29 @@
+meta {
+  name: Create provider participant
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{ISSUER_ADMIN_URL}}/api/admin/v1alpha/participants/{{ISSUER_CONTEXT_ID}}/holders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "did": "{{PROVIDER_ID}}",
+      "holderId": "{{PROVIDER_ID}}",
+      "name": "{{PROVIDER_NAME}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Generated from cURL: curl -sL -X POST 'http://localhost:10013/api/admin/v1alpha/holders' \
+  -H 'Content-Type: application/json' \
+  -d '{ "did": "did:web:localhost%3A7093", "participantId": "did:web:localhost%3A7093", "name": "Provider Participant"}'
+}

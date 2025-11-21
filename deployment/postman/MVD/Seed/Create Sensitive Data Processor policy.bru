@@ -1,0 +1,38 @@
+meta {
+  name: Create Sensitive Data Processor policy
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{HOST}}/api/management/v3/policydefinitions
+  body: text
+  auth: inherit
+}
+
+body:text {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@type": "PolicyDefinition",
+      "@id": "require-sensitive",
+      "policy": {
+          "@type": "Set",
+          "obligation": [
+              {
+                  "action": "use",
+                  "constraint": {
+                      "leftOperand": "DataAccess.level",
+                      "operator": "eq",
+                      "rightOperand": "sensitive"
+                  }
+              }
+          ]
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

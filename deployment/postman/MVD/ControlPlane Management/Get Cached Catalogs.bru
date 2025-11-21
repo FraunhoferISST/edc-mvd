@@ -1,0 +1,42 @@
+meta {
+  name: Get Cached Catalogs
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{CONSUMER_CATALOG_QUERY_URL}}/api/catalog/v1alpha/catalog/query
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@type": "QuerySpec"
+  }
+}
+
+script:post-response {
+  // get the policy id of "asset-1" and save it as an environment variable
+  if(res.getStatus() < 300 && res.getStatus() >= 200){
+      if(res.getBody().length > 0){
+          const dcat_datasets = res.getBody()[0]["dcat:catalog"][1]["dcat:dataset"]
+          const asset_1 = dcat_datasets.find((asset) => asset["@id"] == "asset-1")
+          bru.setEnvVar("POLICY_ID_ASSET_1", asset_1["odrl:hasPolicy"]["@id"]);
+      }
+  }
+  
+  test("Status code is >=200 and <300", function () {
+      expect(res.getStatus() < 300 && res.getStatus() >= 200).to.be.true
+  });
+  test("Policy id for asset 1 is set", function(){
+      expect(bru.getEnvVar("POLICY_ID_ASSET_1")).not.to.be.undefined
+  })
+}
+
+settings {
+  encodeUrl: true
+}

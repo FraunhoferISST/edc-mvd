@@ -1,0 +1,19 @@
+meta {
+  name: IdentityHub
+  seq: 4
+}
+
+auth {
+  mode: apikey
+}
+
+auth:apikey {
+  key: X-Api-Key
+  value: {{IH_API_TOKEN}}
+  placement: header
+}
+script:post-response {
+  test("Status is OK or conflict", function() {
+    expect(res.getStatus()).to.be.oneOf([200, 201, 204, 409])
+  })
+}

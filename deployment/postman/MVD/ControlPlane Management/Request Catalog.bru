@@ -1,0 +1,57 @@
+meta {
+  name: Request Catalog
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{HOST}}/api/management/v3/catalog/request
+  body: json
+  auth: inherit
+}
+
+headers {
+  : 
+}
+
+body:json {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@type": "CatalogRequest",
+      "counterPartyAddress": "{{CATALOG_SERVER_DSP_URL}}/api/dsp",
+      "counterPartyId": "{{PROVIDER_ID}}",
+      "protocol": "dataspace-protocol-http",
+      "querySpec": {
+          "offset": 0,
+          "limit": 50
+      }
+  }
+}
+
+body:text {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@type": "CatalogRequest",
+      "counterPartyAddress": "{{CATALOG_SERVER_DSP_URL}}/api/dsp",
+      "counterPartyId": "{{PROVIDER_ID}}",
+      "protocol": "dataspace-protocol-http",
+      "querySpec": {
+          "offset": 0,
+          "limit": 50
+      }
+  }
+}
+
+script:post-response {
+  test("Status code is >=200 and <300", function () {
+      expect(res.getStatus() < 300 && res.getStatus() >= 200).to.be.true
+  });
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,24 @@
+meta {
+  name: query Participants
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{ISSUER_ADMIN_URL}}/api/admin/v1alpha/participants/{{ISSUER_CONTEXT_ID}}/holders/query
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Gets all participants for a certain query.
+}

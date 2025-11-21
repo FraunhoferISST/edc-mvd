@@ -1,0 +1,38 @@
+meta {
+  name: Create Membership Policy
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{HOST}}/api/management/v3/policydefinitions
+  body: text
+  auth: inherit
+}
+
+body:text {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@type": "PolicyDefinition",
+      "@id": "require-membership",
+      "policy": {
+          "@type": "Set",
+          "permission": [
+              {
+                  "action": "use",
+                  "constraint": {
+                      "leftOperand": "MembershipCredential",
+                      "operator": "eq",
+                      "rightOperand": "active"
+                  }
+              }
+          ]
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,45 @@
+meta {
+  name: Regenerate Token
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api/admin/v1alpha/attestations?participantId=<string>
+  body: json
+  auth: inherit
+}
+
+params:query {
+  participantId: <string>
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "filterExpression": [
+      {
+        "operandLeft": {},
+        "operandRight": {},
+        "operator": "<string>"
+      },
+      {
+        "operandLeft": {},
+        "operandRight": {},
+        "operator": "<string>"
+      }
+    ],
+    "limit": "<integer>",
+    "offset": "<integer>",
+    "sortField": "<string>",
+    "sortOrder": "DESC"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

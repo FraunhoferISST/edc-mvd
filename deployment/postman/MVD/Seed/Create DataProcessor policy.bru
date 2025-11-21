@@ -1,0 +1,38 @@
+meta {
+  name: Create DataProcessor policy
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{HOST}}/api/management/v3/policydefinitions
+  body: text
+  auth: inherit
+}
+
+body:text {
+  {
+      "@context": [
+          "https://w3id.org/edc/connector/management/v0.0.1"
+      ],
+      "@type": "PolicyDefinition",
+      "@id": "require-dataprocessor",
+      "policy": {
+          "@type": "Set",
+          "obligation": [
+              {
+                  "action": "use",
+                  "constraint": {
+                      "leftOperand": "DataAccess.level",
+                      "operator": "eq",
+                      "rightOperand": "processing"
+                  }
+              }
+          ]
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

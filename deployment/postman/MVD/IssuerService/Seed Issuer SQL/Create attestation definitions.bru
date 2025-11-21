@@ -1,0 +1,38 @@
+meta {
+  name: Create attestation definitions
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{ISSUER_ADMIN_URL}}/api/admin/v1alpha/participants/{{ISSUER_CONTEXT_ID}}/attestations
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "attestationType": "database",
+      "configuration": {
+          "tableName": "membership_attestations",
+          "dataSourceName": "membership",
+          "idColumn": "holder_id"
+      },
+      "id": "db-attestation-def-1"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Generated from cURL: curl -sL -X POST 'http://localhost:10013/api/admin/v1alpha/attestations' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "attestationType": "demo",
+    "configuration": {
+    },
+    "id": "demo-attestation-def-1"
+  }'
+}

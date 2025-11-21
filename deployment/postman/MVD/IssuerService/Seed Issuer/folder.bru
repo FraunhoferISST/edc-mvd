@@ -1,0 +1,14 @@
+meta {
+  name: Seed Issuer
+  seq: 3
+}
+
+auth {
+  mode: inherit
+}
+
+script:post-response {
+  test("Status is OK or conflict", function() {
+    expect(res.getStatus()).to.be.oneOf([200, 201, 204, 409])
+  })
+}

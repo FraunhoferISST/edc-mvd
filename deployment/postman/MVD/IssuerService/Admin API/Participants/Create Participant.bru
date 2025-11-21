@@ -1,0 +1,27 @@
+meta {
+  name: Create Participant
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{ISSUER_ADMIN_URL}}/api/admin/v1alpha/participants/{{ISSUER_CONTEXT_ID}}/holders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "did": "did:web:test",
+    "participantId": "did:web:test",
+    "name": "Test Participant"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Adds a new participant.
+}

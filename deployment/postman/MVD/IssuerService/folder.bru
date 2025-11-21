@@ -1,0 +1,14 @@
+meta {
+  name: IssuerService
+  seq: 5
+}
+
+auth {
+  mode: apikey
+}
+
+auth:apikey {
+  key: x-api-key
+  value: {{ISSUER_ADMIN_API_TOKEN}}
+  placement: header
+}
